@@ -21,11 +21,41 @@
     <meta name="twitter:description" content="White-glove NYC automation: missed-call text-back, booking reminders, review management. 48-hour setup.">
     <meta property="twitter:image" content="https://akanmutech.com/assets/nycskyline.jpg">
     
-    <!-- Preconnect for performance -->
+    <!-- DNS prefetch for performance -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://calendly.com">
+    
+    <!-- Preconnect for critical resources -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <!-- Preload critical assets -->
+    <link rel="preload" as="image" href="/assets/AkanmTechlogo (1).png">
+    <link rel="preload" as="script" href="https://cdn.tailwindcss.com">
+    <link rel="preload" as="script" href="main.js">
+    
+    <!-- Critical CSS inline for instant render -->
+    <style>
+        /* Critical above-the-fold styles */
+        .hero-bg { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)); }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Prevent layout shift */
+        .logo-container { min-height: 128px; }
+        .hero-container { min-height: 80vh; }
+        /* Instant visibility and performance */
+        body { visibility: visible !important; }
+        /* Optimize font rendering */
+        * { text-rendering: optimizeSpeed; }
+        /* Reduce reflows */
+        img { contain: layout style; }
+        /* Smooth scrolling performance */
+        html { scroll-behavior: smooth; }
+        /* GPU acceleration for animations */
+        .fade-in { transform: translateZ(0); will-change: opacity; }
+    </style>
+    
+    <!-- Tailwind CSS - Load immediately for instant styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -89,8 +119,8 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-screen-xl mx-auto px-2 sm:px-3 lg:px-4">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <img src="/assets/AkanmTechlogo (1).png" alt="AkanmuTech Logo" class="h-32 w-auto max-h-full">
+                <div class="flex items-center logo-container">
+                    <img src="/assets/AkanmTechlogo (1).png" alt="AkanmuTech Logo" class="h-32 w-auto max-h-full fade-in" width="200" height="128">
                 </div>
                 
                 <!-- Desktop Navigation -->
@@ -99,7 +129,6 @@
                     <a href="#why" class="text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded px-2 py-1">Solutions</a>
                     <a href="#services" class="text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded px-2 py-1">Offers</a>
                     <a href="#verticals" class="text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded px-2 py-1">Verticals</a>
-                    <a href="#pricing" class="text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded px-2 py-1">Pricing</a>
                     <a href="#faq" class="text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded px-2 py-1">FAQ</a>
                     <a href="#testimonials" class="text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded px-2 py-1">Testimonials</a>
                     <a href="#contact" class="text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded px-2 py-1">Contact</a>
@@ -121,7 +150,6 @@
                     <a href="#why" class="block px-3 py-2 text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded">Solutions</a>
                     <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded">Offers</a>
                     <a href="#verticals" class="block px-3 py-2 text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded">Verticals</a>
-                    <a href="#pricing" class="block px-3 py-2 text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded">Pricing</a>
                     <a href="#faq" class="block px-3 py-2 text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded">FAQ</a>
                     <a href="#testimonials" class="block px-3 py-2 text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded">Testimonials</a>
                     <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 rounded">Contact</a>
@@ -134,10 +162,10 @@
         <!-- Hero Section -->
         <section id="home" class="relative py-20 lg:py-32">
             <div class="absolute inset-0 z-0">
-                <img src="/assets/nyc2gif.gif" alt="Animated New York City skyline showcasing the vibrant business landscape" class="w-full h-full object-cover">
+                <img src="/assets/nyc2gif.gif" alt="Animated New York City skyline showcasing the vibrant business landscape" class="w-full h-full object-cover fade-in" loading="eager" width="1920" height="1080" fetchpriority="high">
             </div>
-            <div class="absolute inset-0 z-5 bg-black bg-opacity-40"></div>
-            <div class="relative z-10 max-w-screen-xl mx-auto px-2 sm:px-3 lg:px-4">
+            <div class="absolute inset-0 z-5 hero-bg"></div>
+            <div class="relative z-10 max-w-screen-xl mx-auto px-2 sm:px-3 lg:px-4 hero-container">
                 <div class="text-center">
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
                         Never Miss Another Lead, Booking, or Review
@@ -243,9 +271,9 @@
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto">Start with one offer or combine all three. Every system installs in 48 hours with white-glove setup and month-to-month flexibility.</p>
                 </div>
                 <!-- Main Offer Cards -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 lg:items-stretch">
                     <!-- Engage Card -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-purple-200">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-purple-200 flex flex-col">
                         <div class="text-center mb-6">
                             <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,15 +309,17 @@
                                 <span class="text-sm">Daily lead handoff to phone/email</span>
                             </li>
                         </ul>
-                        <div class="text-xs text-gray-500 mb-4">
+                        <div class="text-xs text-gray-500 mb-4 flex-grow">
                             <strong>Setup:</strong> ≤48 hours<br>
                             <strong>Weekly summary:</strong> Response time, recovered leads
                         </div>
-                        <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Launch Engage</a>
+                        <div class="mt-auto">
+                            <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Launch Engage</a>
+                        </div>
                     </div>
 
                     <!-- Book Card -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-purple-200">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-purple-200 flex flex-col">
                         <div class="text-center mb-6">
                             <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,16 +348,24 @@
                                 </svg>
                                 <span class="text-sm">No-show follow-up and rebook nudges</span>
                             </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-sm">Calendar sync & availability management</span>
+                            </li>
                         </ul>
-                        <div class="text-xs text-gray-500 mb-4">
+                        <div class="text-xs text-gray-500 mb-4 flex-grow">
                             <strong>Setup:</strong> ≤48 hours<br>
                             <strong>Weekly summary:</strong> Bookings, show-rate, cancellations
                         </div>
-                        <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Launch Book</a>
+                        <div class="mt-auto">
+                            <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Launch Book</a>
+                        </div>
                     </div>
 
                     <!-- Reputation Card -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-purple-200">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-purple-200 flex flex-col">
                         <div class="text-center mb-6">
                             <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -356,12 +394,20 @@
                                 </svg>
                                 <span class="text-sm">8–12 scheduled social posts/month</span>
                             </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-sm">Google & Yelp monitoring alerts</span>
+                            </li>
                         </ul>
-                        <div class="text-xs text-gray-500 mb-4">
+                        <div class="text-xs text-gray-500 mb-4 flex-grow">
                             <strong>Setup:</strong> ≤48 hours<br>
                             <strong>Weekly summary:</strong> New reviews, avg rating, posting cadence
                         </div>
-                        <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Launch Reputation</a>
+                        <div class="mt-auto">
+                            <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Launch Reputation</a>
+                        </div>
                     </div>
                 </div>
 
@@ -502,136 +548,6 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="py-20 bg-gray-50">
-            <div class="max-w-screen-xl mx-auto px-2 sm:px-3 lg:px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Pay for Results, Not Just Features</h2>
-                    <p class="text-lg text-gray-600">Month-to-month pricing. Custom quotes for multi-location and high-volume businesses.</p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-                    <!-- Starter Plan -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm border">
-                        <h3 class="text-2xl font-bold mb-2">Starter</h3>
-                        <div class="text-lg text-gray-600 mb-6">Perfect for testing Engage automation</div>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Engage system (missed-call text + basic chatbot)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Email support</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Basic monthly report</span>
-                            </li>
-                        </ul>
-                        <div class="text-xs text-gray-500 mb-6">
-                            <strong>What you pay for:</strong> Lead recovery + response speed<br>
-                            <strong>Install:</strong> 48 hours
-                        </div>
-                        <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Start with Engage</a>
-                    </div>
-
-                    <!-- Growth Plan -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-purple-600 relative">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</div>
-                        <h3 class="text-2xl font-bold mb-2">Growth</h3>
-                        <div class="text-lg text-gray-600 mb-6">Engage + Book OR Engage + Reputation</div>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Two core systems (your choice)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Email + chat support</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Detailed monthly KPI reports</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Proactive optimization</span>
-                            </li>
-                        </ul>
-                        <div class="text-xs text-gray-500 mb-6">
-                            <strong>What you pay for:</strong> Multi-channel lead conversion + retention<br>
-                            <strong>Install:</strong> 48 hours
-                        </div>
-                        <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Choose Growth Systems</a>
-                    </div>
-
-                    <!-- Pro Plan -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm border">
-                        <h3 class="text-2xl font-bold mb-2">Pro</h3>
-                        <div class="text-lg text-gray-600 mb-6">All three systems + one add-on</div>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Engage + Book + Reputation systems</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">One add-on included (CRM, Funnels, Payments, or Voice)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Priority support + weekly optimization</span>
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-5 h-5 text-green-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                                <span class="text-sm">Advanced analytics + A/B testing</span>
-                            </li>
-                        </ul>
-                        <div class="text-xs text-gray-500 mb-6">
-                            <strong>What you pay for:</strong> Complete revenue optimization + dedicated success manager<br>
-                            <strong>Install:</strong> 48 hours
-                        </div>
-                        <a href="#book" class="block w-full bg-purple-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-purple-700 transition">Get Full System</a>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div class="bg-white rounded-lg p-6 shadow-sm mb-8">
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Custom Enterprise Pricing</h3>
-                        <p class="text-gray-600 mb-4">Multi-location businesses and high-volume operations get tailored quotes based on scale and complexity.</p>
-                        <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
-                            <span>• Volume discounts available</span>
-                            <span>• Custom integrations</span>
-                            <span>• Dedicated account management</span>
-                        </div>
-                    </div>
-                    <div class="text-sm text-gray-500">
-                        <p><strong>Note:</strong> Month-to-month commitment. Third-party vendor fees billed separately. HIPAA features require BAAs.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- FAQ Section -->
         <section id="faq" class="py-20 bg-white">
@@ -864,7 +780,6 @@
                     <nav class="space-y-2">
                         <a href="#home" class="block text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Home</a>
                         <a href="#services" class="block text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Services</a>
-                        <a href="#pricing" class="block text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Pricing</a>
                         <a href="#faq" class="block text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">FAQ</a>
                     </nav>
                 </div>
@@ -905,6 +820,7 @@
         </svg>
     </button>
 
-    <script src="main.js" defer></script>
+    <!-- Load JavaScript immediately for instant interactivity -->
+    <script src="main.js"></script>
 </body>
 </html>
