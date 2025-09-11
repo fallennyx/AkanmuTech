@@ -1,0 +1,12 @@
+# Netlify redirects file
+
+# Force HTTPS
+http://akanmutech.netlify.app/* https://akanmutech.netlify.app/:splat 301!
+
+# Custom domain redirects (when using akanmutech.com)
+http://akanmutech.com/* https://akanmutech.com/:splat 301!
+http://www.akanmutech.com/* https://akanmutech.com/:splat 301!
+https://www.akanmutech.com/* https://akanmutech.com/:splat 301!
+
+# SPA fallback (not needed for this static site, but good to have)
+/*    /index.html   200

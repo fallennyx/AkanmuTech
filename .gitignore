@@ -27,3 +27,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Netlify
+.netlify/
+.env
+.env.local
